@@ -13,6 +13,8 @@ import Dashboard from "./user/Dashboard";
 import Account from "./user/Account";
 import Bookings from "./user/Bookings";
 import Accomodation from "./user/Accomodation";
+import PlaceForm from "./user/PlaceForm";
+import SinglePlace from "./pages/SinglePlace";
 
 axios.defaults.baseURL = "http://localhost:8000";
 
@@ -31,10 +33,12 @@ function App() {
             <Route path="user/profile" element={<Account />} />
             <Route path="user/bookings" element={<Bookings />} />
             <Route path="user/place" element={<Accomodation />} />
+            <Route path="user/place/:id" element={<PlaceForm />} />
           </Route>
+          <Route path="/place/:id" element={<SinglePlace />}></Route>
         </Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
