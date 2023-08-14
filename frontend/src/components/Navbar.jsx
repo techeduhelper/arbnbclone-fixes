@@ -55,8 +55,8 @@ const Navbar = () => {
           </Link>
           {/* search box */}
           <Search />
-          {/* profile section */}
 
+          {/* profile section */}
           <div className="profile flex flex-row gap-3 items-center justify-between cursor-pointer sm:text-center sm:invisible md:visible">
             <div>
               <svg
@@ -79,6 +79,7 @@ const Navbar = () => {
             )}
             <div
               onClick={openTogler}
+              onMouseEnter={openTogler}
               className="flex border rounded-3xl p-1 hover:shadow-md text-gray-500 items-center px-3 gap-3 justify-center sm:mr-2 cursor-pointer"
             >
               <div>

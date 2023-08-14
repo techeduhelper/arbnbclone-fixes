@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Perks from "../components/Perks";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PlaceForm = ({ setShowForm }) => {
   const { id } = useParams();
@@ -17,6 +17,7 @@ const PlaceForm = ({ setShowForm }) => {
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
   const [maxguest, setMaxguest] = useState();
+  const navigate = useNavigate();
 
   // add photos
   const handleAddPhoto = () => {
@@ -64,7 +65,9 @@ const PlaceForm = ({ setShowForm }) => {
       setCheckout("");
       setMaxguest("");
       setPrice("");
-      setShowForm(false);
+      setTimeout(() => {
+        navigate("/dashboard/user/place");
+      }, 1500);
     } else {
       try {
         const response = await axios.post("/api/arrbnb/v1/place/create-place", {

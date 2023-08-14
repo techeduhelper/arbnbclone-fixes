@@ -26,9 +26,9 @@ const Search = () => {
         {showSearch && (
           <div>
             <input
-              className="outline-none w-80 px-2"
+              className="outline-none w-80 px-2 transition duration-1000"
               type="text"
-              placeholder="Enter search keyword"
+              placeholder="Search your dream Place"
 
               //   onChange={handleSearchInputChange}
             />

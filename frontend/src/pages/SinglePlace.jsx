@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { GiFireplace } from "react-icons/gi";
+import { FaRedRiver } from "react-icons/fa";
+import Booking from "../components/Booking";
 
 const SinglePlace = () => {
   const { id } = useParams();
@@ -37,36 +40,68 @@ const SinglePlace = () => {
           <div className="px-5 py-4 mx-auto">
             <div className="mx-auto">
               <div className="rounded-lg">
-                <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-2 rounded-md border-spacing-2 bg-white p-6 py-3 [&>hover]:bg-slate-100">
+                <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-2 rounded-md border-spacing-2 bg-white p-6 py-3 [&>hover]:bg-slate-100 z-0">
                   <div>
                     <img
-                      className="h-full w-full object-cover rounded-lg"
+                      className="h-full w-full object-cover sm:rounded-lg md:rounded-none md:rounded-tl-xl md:rounded-bl-xl"
                       src={place.photos[0]}
                       alt={`Image 1`}
                     />
                   </div>
-                  <div className="flex flex-col h-full gap-4">
+                  <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-2">
                     <img
-                      className="h-66 object-cover rounded-lg"
+                      className="h-full object-cover w-full sm:rounded-lg md:rounded-none"
                       src={place.photos[1]}
                       alt={`Image 2`}
                     />
 
                     <img
-                      className="h-60 object-cover rounded-lg"
+                      className="h-full object-cover sm:rounded-lg md:rounded-none md:rounded-tr-xl w-full"
                       src={place.photos[2]}
                       alt={`Image 3`}
                     />
+                    <img
+                      className="h-full object-cover sm:rounded-lg md:rounded-none w-full"
+                      src={place.photos[3]}
+                      alt={`Image 4`}
+                    />
+                    <img
+                      className="h-full object-cover sm:rounded-lg md:rounded-none md:rounded-br-xl w-full"
+                      src={place.photos[4]}
+                      alt={`Image 5`}
+                    />
                   </div>
                 </div>
-
-                <div className="flex text-lg mb-4 mt-8 ml-4 w-3/3 mr-8">
+                <div className="flex md:flex-row sm:flex-col text-lg mb-4 mt-8 ml-4 w-3/3 mr-8">
                   {place.address && (
-                    <p className="text-justify">{place.description}</p>
+                    <div className="w-3/5 sm:w-full md:3/5">
+                      <p className="text-justify ">{place.description}</p>
+                      <div className="w-full h-[0.5px] bg-slate-200 my-8"></div>
+                      <div className="text-xl text-gray-700 font-bold flex  flex-col gap-5">
+                        <div className="flex items-center gap-3">
+                          <GiFireplace size={30} />
+                          <div className="flex flex-col">
+                            <span>Self Check In</span>
+                            <span className="text-[1rem] font-cursive text-gray-500">
+                              You can check in with the building staff.
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <FaRedRiver size={30} />
+                          <div className="flex flex-col">
+                            <span>Dive right in</span>
+                            <span className="text-[1rem] font-cursive text-gray-500">
+                              This is one of the few places in the area with a
+                              pool.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="w-full h-[0.5px] bg-slate-200 my-8"></div>
+                    </div>
                   )}
-                  <div className="ml-10 w-full bg-[#ffffff] shadow-2xl sticky rounded-md h-[500px] border z-10 justify-center flex items-center">
-                    Per night
-                  </div>
+                  <Booking place={place} />
                 </div>
               </div>
             </div>
