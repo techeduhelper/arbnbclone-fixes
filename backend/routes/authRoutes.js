@@ -1,5 +1,5 @@
 import express from 'express';
-import registerController, { forgetPasswordController, loginController, testController } from '../controllers/authController.js';
+import registerController, { forgetPasswordController, loginController, otpLoginController, testController } from '../controllers/authController.js';
 import { isAdmin, requireSignIn } from '../midlewares/authMidlewares.js';
 
 // rest object
@@ -11,6 +11,9 @@ router.post('/register', registerController);
 
 // Login Routes
 router.post('/login', loginController);
+
+// using otp 
+router.post('/otp-login', otpLoginController);
 
 // Forgot password Rutes
 router.post("/forget-password", forgetPasswordController)

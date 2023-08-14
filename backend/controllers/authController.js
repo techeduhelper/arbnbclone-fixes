@@ -2,6 +2,10 @@
 import userModel from "../model/userModel.js";
 import { hassPassword, comparePassword } from '../helpers/authHelper.js'
 import JWT from 'jsonwebtoken';
+import twilio from 'twilio';
+
+
+
 
 const registerController = async (req, res) => {
     try {
@@ -141,4 +145,47 @@ export const forgetPasswordController = async (req, res) => {
 // test controller
 export const testController = (req, res) => {
     res.send("test controller working fine!!!")
+}
+
+
+
+
+
+// using otp login controller
+
+
+const AC_twilio = "AC08b8b1b2a69da9c53c0bfa4e5d2fd22f";
+const twilio_token = "589b8e79a5b00d12bb44cde7a21e17ba";
+const twilio_mobno = "+18787887222";
+
+const twilioClient = twilio(AC_twilio, twilio_token);
+
+export const otpLoginController = async (req, res) => {
+    try {
+        const { mobno } = req.body;
+        const user = await userModel.findOne({ mobno });
+        if (!user) {
+            return res.status(404).send({
+                success: false,
+                message: "Mobile number doesnot exist"
+            });
+        }
+        const otp = Math.floor(1000 + Math.random() * 9000);
+        await twilioClient.messages.create({
+            body: `Your OTP is ${otp}`,
+            from: twilio_mobno,
+            to: user.mobno,
+        });
+        res.status(200).send({
+            success: true,
+            message: 'OTP sent successfully',
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(404).send({
+            success: false,
+            message: 'OTP Login Failed!',
+            error
+        })
+    }
 }

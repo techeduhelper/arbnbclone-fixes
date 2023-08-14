@@ -1,3 +1,4 @@
+import { Timestamp } from 'mongodb';
 import mongoose from 'mongoose';
 
 const placeSchema = new mongoose.Schema({
@@ -12,7 +13,7 @@ const placeSchema = new mongoose.Schema({
     checkout: String,
     maxguest: Number,
     perks: [String],
-});
+}, { timestamps: true });
 
 export default mongoose.model('place', placeSchema);
 

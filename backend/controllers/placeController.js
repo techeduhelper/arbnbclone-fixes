@@ -27,7 +27,7 @@ export const createPlaceController = async (req, res) => {
 export const getPlaceController = async (req, res) => {
     try {
         const userId = req.user._id;
-        const places = await placeModel.find({ owner: userId });
+        const places = await placeModel.find({ owner: userId }).sort({ createdAt: -1 });
         res.status(200).json({ places });
     } catch (error) {
         console.error('Error fetching user places:', error);
@@ -53,7 +53,7 @@ export const getSinPlaceController = async (req, res) => {
 
 export const getAnyPlacecontroller = async (req, res) => {
     try {
-        const allPlaces = await placeModel.find();
+        const allPlaces = await placeModel.find().sort({ createdAt: -1 });
         res.status(200).json({
             success: true,
             message: "All places fetched successfully",

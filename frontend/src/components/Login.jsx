@@ -10,6 +10,10 @@ const Login = ({ HandleClose, accout, switchAccount }) => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const [mobileLogin, setMobileLogin] = useState();
+  const [afterOtp, setAfterOtp] = useState(false);
+  const [mobno, setMobno] = useState("");
+  const [error, setError] = useState("");
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -39,6 +43,28 @@ const Login = ({ HandleClose, accout, switchAccount }) => {
     }
   };
 
+  // toggler login form
+  const handleMobileLogin = () => {
+    setMobileLogin(!mobileLogin);
+  };
+
+  // send otp
+  const handleSendOtp = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/arrbnb/v1/auth/otp-login", {
+        mobno,
+      });
+      if (response.data.success) {
+        setAfterOtp(true);
+      } else {
+        setError(response.data.message);
+      }
+    } catch (error) {
+      setError("An error occurred while sending OTP.");
+    }
+  };
+
   return (
     <>
       <div className="login-dialog-content w-96 h-auto flex flex-col p-4 gap-6 justify-center">
@@ -63,32 +89,76 @@ const Login = ({ HandleClose, accout, switchAccount }) => {
             {accout.heading}
           </span>
         </div>
-        <form className="flex flex-col gap-5" onSubmit={loginHandler}>
-          <input
-            className="w-auto border border-gray-200 rounded-md p-2"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="username"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            className="w-auto border border-gray-200 rounded-md p-2"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        {!mobileLogin ? (
+          <form className="flex flex-col gap-5" onSubmit={loginHandler}>
+            <input
+              className="w-auto border border-gray-200 rounded-md p-2"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className="w-auto border border-gray-200 rounded-md p-2"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-          <button
-            type="submit"
-            className="bg-[#FF385C] border rounded-md p-2 text-white"
+            <button
+              type="submit"
+              className="bg-[#FF385C] border rounded-md p-2 text-white"
+            >
+              Sign In
+            </button>
+          </form>
+        ) : (
+          <form className="">
+            <div className="text-center">
+              <input
+                value={mobno}
+                onChange={(e) => setMobno(e.target.value)}
+                type="tel"
+                name="mobno"
+                placeholder="Enter Mobile no"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+              {!afterOtp ? (
+                <button
+                  onClick={handleSendOtp}
+                  className="mt-4 py-2 bg-slate-50 font-bold w-full rounded-lg hover:bg-slate-400 hover:text-white"
+                >
+                  Send Otp
+                </button>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Enter OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                  />
+                  <button onClick={handleOtpLogin}>Login</button>
+                </>
+              )}
+              {error && <p>{error}</p>}
+            </div>
+          </form>
+        )}
+
+        <p className="text-center text-xl font-semibold">or</p>
+        <form action="">
+          <span
+            className="flex justify-center bg-slate-200 font-medium py-2 text-lg font-cursive cursor-pointer shadow-lg capitalize"
+            onClick={handleMobileLogin}
           >
-            Sign In
-          </button>
+            {!mobileLogin ? " Login Using Mobile No" : "contine with username"}
+          </span>
         </form>
 
         <span className="text-center ">

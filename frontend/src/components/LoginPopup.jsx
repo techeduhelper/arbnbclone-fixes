@@ -9,13 +9,13 @@ const LoginPopup = ({ DialogOpen, openTogler }) => {
   return (
     <>
       <div
-        className="flex flex-col gap-3 text-[1.1rem]  w-60 absolute z-30 bg-[#ffffff] shadow-xl border border-gray-100 rounded-xl transition duration-1000  mt-56  [&>*]:w-full hover:py-3 hover:rounded-lg p-2 cursor-pointer "
+        className="flex flex-col gap-3 text-[1.1rem]  w-60 absolute z-30 bg-[#ffffff] shadow-xl border border-gray-100 rounded-xl transition duration-1000  mt-56  [&>*]:w-full hover:py-3 hover:rounded-lg p-2 cursor-pointer right-24"
         onClick={openTogler}
       >
         {!auth?.user ? (
           <Link
             onClick={DialogOpen}
-            className="hover:bg-red-500 hover:rounded-md hover:py-1 transition duration-500"
+            className="hover:bg-red-500 hover:rounded-md hover:py-1 transition duration-500 hover:text-white"
           >
             Log in
           </Link>
