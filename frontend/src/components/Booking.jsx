@@ -1,9 +1,45 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Booking = ({ place }) => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [guest, setGuest] = useState(1);
+  const pricePernight = place.price;
+  const [total, setTotal] = useState(pricePernight);
+  const [incluedTaxText, setIncluedTaxText] = useState("Total before taxes");
+  const [calToCheckout, setCalToCheckout] = useState(false);
+
+  const chnagetaxText = () => {
+    setIncluedTaxText("Total including all taxes");
+  };
+
+  const formatDateForInput = (date) => {
+    const year = date.getFullYear();
+    const month = `${date.getMonth() + 1}`.padStart(2, "0");
+    const day = `${date.getDate()}`.padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const handleBooking = () => {
+    if (isNaN(new Date(checkIn)) || isNaN(new Date(checkOut))) {
+      return;
+    }
+    const oneDay = 24 * 60 * 60 * 1000;
+    const days =
+      Math.round((new Date(checkOut) - new Date(checkIn)) / oneDay) + 1;
+    const totalCost = pricePernight * days * guest;
+
+    const rateOfTax = 0.12;
+    const totalTax = totalCost * rateOfTax;
+    const includingTaxTotal = totalCost + totalTax;
+    // toFixed(1) only one decimal place
+    setTotal(totalCost + "+" + " ₹" + totalTax.toFixed(1));
+    chnagetaxText();
+    if (pricePernight != includingTaxTotal) {
+      setCalToCheckout(true);
+    }
+  };
 
   return (
     <>
@@ -11,10 +47,10 @@ const Booking = ({ place }) => {
         <div className="flex flex-col justify-start p-10 w-full">
           <div className="flex  justify-between">
             <div className="flex flex-col">
-              <span className="text-2xl text-gray-900 items-center">
-                ₹ {place.price}
+              <span className="text-2xl text-gray-900 items-center font-semibold">
+                ₹ {total}
               </span>
-              <span className="text-gray-500">Total before taxes</span>
+              <span className="text-gray-500">{incluedTaxText}</span>
             </div>
             <span className="">1 review</span>
           </div>
@@ -29,7 +65,9 @@ const Booking = ({ place }) => {
                       type="date"
                       placeholder="Add Date"
                       value={checkIn}
-                      onChange={(e) => setCheckIn(e.target.value)}
+                      onChange={(e) =>
+                        setCheckIn(formatDateForInput(new Date(e.target.value)))
+                      }
                     />
                   </span>
                 </div>
@@ -41,7 +79,11 @@ const Booking = ({ place }) => {
                       type="date"
                       placeholder="Add Date"
                       value={checkOut}
-                      onChange={(e) => setCheckOut(e.target.value)}
+                      onChange={(e) =>
+                        setCheckOut(
+                          formatDateForInput(new Date(e.target.value))
+                        )
+                      }
                     />
                   </span>
                 </div>
@@ -53,14 +95,26 @@ const Booking = ({ place }) => {
                 name=""
                 id=""
                 value={guest}
-                onChange={(e) => setGuest(e.target.value)}
-                className="w-[95%] h-4/5 outline-none bg-slate-100 rounded-lg px-4 font-bold"
+                onChange={(e) => setGuest(parseInt(e.target.value))}
+                className="w-[95%] h-4/5 outline-none  border-2 rounded-lg px-4 font-bold"
               />
             </div>
           </div>
-          <button className="mt-4 w-full py-3 text-white rounded-md bg-red-500">
-            Book Now
-          </button>
+          {!calToCheckout ? (
+            <button
+              className="mt-4 w-full py-3 text-white rounded-md bg-red-500"
+              onClick={handleBooking}
+            >
+              Check Now
+            </button>
+          ) : (
+            <Link
+              to={"/dashboard/user/bookings"}
+              className="mt-4 flex justify-center w-full py-3 text-white rounded-md bg-red-500"
+            >
+              Book Now
+            </Link>
+          )}
         </div>
       </div>
     </>

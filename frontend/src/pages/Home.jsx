@@ -61,13 +61,13 @@ const Home = () => {
                 className="mb-4"
               >
                 {data.photos.map((photo, photoIndex) => (
-                  <div key={photoIndex}>
+                  <Link key={photoIndex} to={"/place/" + data._id}>
                     <img
                       className="h-80 w-full rounded-md"
-                      src={photo}
+                      src={photo} 
                       alt={`Image ${photoIndex}`}
                     />
-                  </div>
+                  </Link>
                 ))}
               </Carousel>
               <Link to={"/place/" + data._id}>
