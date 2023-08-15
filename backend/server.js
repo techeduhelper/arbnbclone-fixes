@@ -5,6 +5,8 @@ import cors from 'cors'
 import connectDB from './db.js';
 import authRoutes from "./routes/authRoutes.js";
 import placeRoutes from './routes/placeRoute.js'
+import bookingRoutes from './routes/bookingRoutes.js'
+
 
 // config dotenv
 dotenv.config()
@@ -27,6 +29,7 @@ app.use(cors({
 // Routes
 app.use('/api/arrbnb/v1/auth', authRoutes);
 app.use('/api/arrbnb/v1/place', placeRoutes);
+app.use('/api/arrbnb/v1/booking', bookingRoutes);
 
 // rest api
 app.get('/', (req, res) => {

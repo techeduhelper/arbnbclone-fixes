@@ -25,7 +25,7 @@ router.get('/single-place/:id', getSinPlaceController)
 router.get('/get-place/:id', requireSignIn, getSinglePlaceController)
 
 // for delete
-router.delete('/delete-place:id', requireSignIn, deletePlaceController)
+router.delete('/delete-place/:id', requireSignIn, deletePlaceController)
 
 
 export default router;

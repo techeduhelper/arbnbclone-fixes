@@ -146,7 +146,7 @@ export const getSinglePlaceController = async (req, res) => {
 
 export const deletePlaceController = async (req, res) => {
     try {
-        const { id } = req.params;
+        const id = req.params.id;
         const deletedPlace = await placeModel.findByIdAndDelete(id);
 
         if (!deletedPlace) {

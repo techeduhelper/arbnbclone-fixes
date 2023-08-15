@@ -5,10 +5,6 @@ import Placecard from "./Placecard";
 const Places = () => {
   const [places, setPlaces] = useState([]);
 
-  const handleDeletePlace = (deletedId) => {
-    setPlaces(places.filter((place) => place._id !== deletedId));
-  };
-
   // get all places listing by user
   useEffect(() => {
     const getPlace = async () => {
@@ -30,7 +26,7 @@ const Places = () => {
             <Placecard
               key={place._id}
               place={place}
-              onDelete={handleDeletePlace}
+              setPlaces={setPlaces}
             />
           ))}
       </div>

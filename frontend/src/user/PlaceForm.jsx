@@ -158,12 +158,12 @@ const PlaceForm = ({ setShowForm }) => {
             value={photoLink}
             onChange={(e) => setPhotoLink(e.target.value)}
           />
-          <button
-            className=" px-2 bg-slate-600 rounded-tr-full rounded-br-full text-white"
+          <div
+            className=" px-2 bg-slate-600 rounded-tr-full rounded-br-full text-white flex items-center cursor-pointer"
             onClick={handleAddPhoto}
           >
             Add photo
-          </button>
+          </div>
         </div>
         <div className="w-full py-4 px-2 text-center flex justify-center rounded-lg cursor-pointer gap-1 text-xl">
           {photos.map((photo, index) => (
@@ -229,7 +229,6 @@ const PlaceForm = ({ setShowForm }) => {
           value={extrainfo}
           onChange={(e) => setExtrainfo(e.target.value)}
         />
-        {console.log(extrainfo)}
         <label className="text-xl text-left">
           Check In, Check Out & maxGuest:
         </label>

@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import axios from "axios";
@@ -38,7 +37,6 @@ function App() {
           <Route path="/place/:id" element={<SinglePlace />}></Route>
         </Route>
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 }

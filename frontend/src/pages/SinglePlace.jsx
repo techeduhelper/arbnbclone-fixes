@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { GiFireplace } from "react-icons/gi";
 import { FaRedRiver } from "react-icons/fa";
+import { ImLocation2 } from "react-icons/im";
 import Booking from "../components/Booking";
 
 const SinglePlace = () => {
@@ -32,11 +33,17 @@ const SinglePlace = () => {
         <section className="text-gray-600 body-font w-full">
           <div className="flex flex-col justify-start">
             <span className="mt-3 ml-12 text-3xl font-bold">{place.title}</span>
-            <span className="mt-3 ml-12 text-lg font-semibold">
-              {place.address}
-            </span>
+            <Link
+              to={`http://maps.google.co.uk/maps?q=${place.address}`}
+              target="_blank"
+              className="flex items-center gap-1 ml-10 mt-1"
+            >
+              <ImLocation2 size={30} />
+              <span className="mt-3 text-lg font-semibold">
+                {place.address}
+              </span>
+            </Link>
           </div>
-
           <div className="px-5 py-4 mx-auto">
             <div className="mx-auto">
               <div className="rounded-lg">

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <div className="flex justify-between items-center w-full sm:m-0 sm:px-0 py-4  lg:px-20 border-b-2  sticky z-10 sm:flex-col md:flex-row">
+      <div className="flex justify-between items-center w-full sm:m-0 sm:px-0 py-4  lg:px-20 border-b-2  sm:flex-col md:flex-row">
         <div className="left flex gap-4 py-3 [&>*:hover]:text-gray-500">
           <Link>@2023 Airbnb</Link>
           <Link to={"/privacy"}>Privacy</Link>

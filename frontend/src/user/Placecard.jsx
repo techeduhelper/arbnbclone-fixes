@@ -1,21 +1,17 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-const Placecard = ({ place, onDelete }) => {
-  const handleDelete = async () => {
+const Placecard = ({ place, setPlaces }) => {
+  const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `/api/arrbnb/v1/place/delete-place/${place._id}`
+        `/api/arrbnb/v1/place/delete-place/${id}`
       );
-      if (response.data.success) {
-        console.log("Place deleted successfully");
-        onDelete(place._id); // Notify parent component to update the list
-      } else {
-        console.error("Error deleting place:", response.data.message);
-      }
     } catch (error) {
-      console.error("Error deleting place:", error);
+      toast.success("Place deleted successfully"), error;
+      setPlaces(place.filter((p) => p._id !== id));
     }
   };
 
@@ -43,7 +39,7 @@ const Placecard = ({ place, onDelete }) => {
         <div className="flex justify-center mb-0 gap-5">
           <button
             className="w-1/2  mb-3 bg-red-600 px-4 py-2 rounded-full text-white shadow-xl font-semibold border border-gray-400 border-opacity-50 animate-bounce"
-            onClick={handleDelete}
+            onClick={() => handleDelete(place._id)}
           >
             Delete Place
           </button>
