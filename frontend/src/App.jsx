@@ -15,7 +15,7 @@ import Accomodation from "./user/Accomodation";
 import PlaceForm from "./user/PlaceForm";
 import SinglePlace from "./pages/SinglePlace";
 
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = `https://arbnb-backend.onrender.com`;
 
 function App() {
   return (

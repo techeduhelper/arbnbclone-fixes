@@ -23,11 +23,7 @@ const Places = () => {
       <div className="place-container mt-10 w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {places &&
           places?.map((place) => (
-            <Placecard
-              key={place._id}
-              place={place}
-              setPlaces={setPlaces}
-            />
+            <Placecard key={place._id} place={place} setPlaces={setPlaces} />
           ))}
       </div>
     </>

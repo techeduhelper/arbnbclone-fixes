@@ -2,19 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const UserMenu = () => {
-  // const { subpage } = useParams();
-
-  // function LinkClass(type = null) {
-  //   let classes = "py-2 px-4";
-  //   if (type === subpage) {
-  //     classes += " bg-pink-600 text-white font-bold rounded-full";
-  //   }
-  //   return classes;
-  // }
-
   const location = useLocation();
 
-  // Function to determine if a link should have the "active" class
   function isActive(subpage) {
     return location.pathname.includes(subpage);
   }
