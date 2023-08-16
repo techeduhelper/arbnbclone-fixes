@@ -12,7 +12,7 @@ const Search = () => {
 
   return (
     <>
-      <div className="inputcontainer inline-flex justify-center items-center border shadow-md border-gray-200 rounded-full py-2 gap-3 px-3 font-semibold cursor-pointer hover:shadow-lg md:ml-36 sm:ml-20 md:w-96 sm:justify-center sm:absolute md:static sm:w-96 h-12">
+      <div className="inputcontainer inline-flex justify-center items-center border shadow-md border-gray-200 rounded-full py-2 gap-3 px-3 font-semibold cursor-pointer hover:shadow-lg md:ml-36 sm:ml-16 md:w-96 sm:justify-center sm:absolute md:static sm:w-96 h-12">
         {divmenu && (
           <div className="flex delay-300 justify-center items-center gap-4">
             <div className="anywhere text-lg h-8">Anywhere</div>

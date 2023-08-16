@@ -5,6 +5,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import { BiTransfer } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Bookings = () => {
   const [auth, setAuth] = useAuth();
@@ -31,6 +32,9 @@ const Bookings = () => {
       );
       if (response.data.success) {
         setBookedPlace(bookedPlace.filter((booking) => booking._id !== id));
+        setTimeout(() => {
+          toast.success("Your Booking is now cancil ! please do new Booking");
+        }, 700);
       }
     } catch (error) {
       console.error("Error deleting booking:", error);
@@ -52,16 +56,16 @@ const Bookings = () => {
             <div key={b._id} className=" bg-slate-100 rounded-md p-3">
               <div className="photo w-full h-32 mb-2">
                 <img
-                  src={b?.place?.photos}
+                  src={b.place.photos[0]}
                   alt="Img-1"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div className="py-2 text-center border rounded-lg bg-white text-md font-bold">
-                <span className="">{b.place.title.substring(0, 30)}</span>
+                <span className="">{b?.place?.title.substring(0, 30)}</span>
               </div>
               <Link
-                to={`/place/${b.place._id}`}
+                to={`/place/${b?.place?._id}`}
                 className="flex justify-between w-full items-center border-4 px-2 py-1 mt-2"
               >
                 <div className="flex items-center flex-col">

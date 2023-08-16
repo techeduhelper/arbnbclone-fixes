@@ -29,8 +29,8 @@ const Navbar = () => {
   return (
     <>
       {/* second header */}
-      <header className="flex  w-full items-center py-4 border-b-2 z-10 fixed bg-[#ffffff] md:justify-between md:px-20">
-        <div className="flex justify-between sm:container">
+      <header className="flex w-full items-center py-4 border-b-2 z-10 fixed bg-[#ffffff] md:justify-between md:px-20">
+        <div className="flex justify-between sm:container w-full">
           <Link
             to={"/"}
             className="logo flex flex-row gap-2 text-red-500 text-[1.5rem] items-center justify-start cursor-pointer sm:invisible md:visible drop-shadow-sm"

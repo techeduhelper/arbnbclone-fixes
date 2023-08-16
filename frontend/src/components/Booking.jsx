@@ -87,29 +87,35 @@ const Booking = ({ place }) => {
             </span>
           </div>
           <div className=" w-full grid grid-rows-2 border border-gray-500 rounded-lg h-40 mt-4 align-middle">
-            <div className="w-full p-1 border-none">
-              <div className="flex w-full justify-between gap-1 border-b-4">
-                <div className="w-full flex flex-col items-center p-2 rounded-tl-lg border-r-2">
-                  <span className=" text-xl text-gray-700">Check In</span>
-                  <span>
+            <div className="grid grid-cols-2 border-b">
+              <div className="flex w-full items-center justify-content-around">
+                <div className="w-full flex flex-col items-center justify-center border-r">
+                  <div className="flex justify-center items-center text-gray-700 w-full">
+                    Check In
+                  </div>
+                  <div className="w-full flex justify-center items-center px-2">
                     <input
-                      className="outline-none "
+                      className="outline-none w-full"
                       type="date"
                       placeholder="Add Date"
                       value={checkIn}
+                      required
                       onChange={(e) =>
                         setCheckIn(formatDateForInput(new Date(e.target.value)))
                       }
                     />
-                  </span>
+                  </div>
                 </div>
-                <div className="w-full flex flex-col items-center">
-                  <span className="text-xl text-gray-700 ">Check Out</span>
-                  <span className="px-4">
+                <div className="w-full flex flex-col items-center justify-center ">
+                  <div className=" text-gray-700 w-full flex justify-center items-center">
+                    Check Out
+                  </div>
+                  <div className="flex items-center justify-center w-full px-2">
                     <input
-                      className="outline-none "
+                      className="outline-none w-full"
                       type="date"
                       placeholder="Add Date"
+                      required
                       value={checkOut}
                       onChange={(e) =>
                         setCheckOut(
@@ -117,7 +123,7 @@ const Booking = ({ place }) => {
                         )
                       }
                     />
-                  </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -126,6 +132,7 @@ const Booking = ({ place }) => {
                 type="number"
                 name=""
                 id=""
+                required
                 value={guest}
                 onChange={(e) => setGuest(parseInt(e.target.value))}
                 className="w-[95%] h-4/5 outline-none  border-2 rounded-lg px-4 font-bold"
@@ -145,6 +152,7 @@ const Booking = ({ place }) => {
                 <label>Name:</label>
                 <input
                   value={name}
+                  required
                   onChange={(e) => setName(e.target.value)}
                   type="text"
                   className="outline-none  border-2 rounded-lg px-2 font-bold py-2"
@@ -154,6 +162,7 @@ const Booking = ({ place }) => {
                 <label>Phone No.</label>
                 <input
                   value={mobno}
+                  required
                   onChange={(e) => setMobno(e.target.value)}
                   type="text"
                   className="outline-none  border-2 rounded-lg px-2 font-bold py-2"

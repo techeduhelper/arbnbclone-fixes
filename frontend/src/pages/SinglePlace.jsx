@@ -106,6 +106,13 @@ const SinglePlace = () => {
                         </div>
                       </div>
                       <div className="w-full h-[0.5px] bg-slate-200 my-8"></div>
+                      <div className="flex w-full justify-between sm:flex-col md:flex-row gap-2">
+                        {place.perks.map((p) => (
+                          <div className="border px-4 py-2 hover:bg-slate-900 rounded-xl font-semibold text-white cursor-pointer bg-slate-600 w-full flex items-center justify-center">
+                            {p}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                   <Booking place={place} />

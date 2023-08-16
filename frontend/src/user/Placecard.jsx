@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,6 @@ const Placecard = ({ place, setPlaces }) => {
       );
     } catch (error) {
       toast.success("Place deleted successfully"), error;
-      setPlaces(place.filter((p) => p._id !== id));
     }
   };
 
@@ -24,8 +23,8 @@ const Placecard = ({ place, setPlaces }) => {
         >
           <img
             className="lg:h-48 md:h-36 w-full object-cover object-center px-3"
-            src={place.photos}
-            alt="blog"
+            src={place.photos[0]}
+            alt="Img1"
           />
           <div className="p-6">
             <h1 className="title-font text-lg font-medium text-gray-900 mb-3">

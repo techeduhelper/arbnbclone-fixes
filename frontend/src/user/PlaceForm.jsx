@@ -159,7 +159,7 @@ const PlaceForm = ({ setShowForm }) => {
             onChange={(e) => setPhotoLink(e.target.value)}
           />
           <div
-            className=" px-2 bg-slate-600 rounded-tr-full rounded-br-full text-white flex items-center cursor-pointer"
+            className="px-2 w-28 h-full bg-slate-600 rounded-tr-full rounded-br-full text-white flex items-center cursor-pointer"
             onClick={handleAddPhoto}
           >
             Add photo
