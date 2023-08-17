@@ -51,11 +51,11 @@ Copy code
 cd frontend
 npm install
 Configuration
-Rename .env.example to .env in both the backend and frontend folders.
+Create .env in the backend.
 
 Configure the environment variables in the .env files:
 
-MONGODB_URI: Your MongoDB connection string
+MONGODB_URL: Your MongoDB connection string
 PORT: Port number for the server
 ...
 Usage
