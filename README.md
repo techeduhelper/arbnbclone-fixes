@@ -29,54 +29,49 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Installation
 
 1. Clone the repository:
+ ```bash
+ git clone https://github.com/techeduhelper/arbnbclone-fixes.git
+ ```
 
-   ```bash
-   git clone https://github.com/techeduhelper/arbnbclone-fixes.git
-   Navigate to the project folder: 
-   ```
-
+Navigate to the project folder: 
 ```bash
-Copy code
 cd arbnbclone-fixes
-Install the server dependencies:
 ```
 
+Install the server dependencies:
 ```bash
-Copy code
 cd backend
 npm install
 ```
-Install the client dependencies:
 
+Install the client dependencies:
 ```bash
-Copy code
 cd frontend
 npm install
 ```
 Configuration
+```bash
 Create .env in the backend.
-
-
 Configure the environment variables in the .env files:
+```
 
 MONGODB_URL: Your MongoDB connection string
 PORT: Port number for the server
 ...
+
 Usage
 Start the server:
-
 ```bash
-Copy code
 cd backend
 npm start
 ```
+
 Start the client:
 ```bash
-Copy code
 cd frontend
 npm start
-Open your browser and navigate to http://localhost:5173 to see the app in action.
 ```
+Open your browser and navigate to http://localhost:5173 to see the app in action.
 
 Contributing
 Contributions are welcome! If you want to contribute to this project, follow these steps:
