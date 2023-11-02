@@ -32,7 +32,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
    ```bash
    git clone https://github.com/techeduhelper/arbnbclone-fixes.git
-   Navigate to the project folder:
+   Navigate to the project folder: cd arbnbclone-fixes
    ```
 
 bash
