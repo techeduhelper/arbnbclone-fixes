@@ -32,26 +32,30 @@ Follow these instructions to get a copy of the project up and running on your lo
 
    ```bash
    git clone https://github.com/techeduhelper/arbnbclone-fixes.git
-   Navigate to the project folder: cd arbnbclone-fixes
+   Navigate to the project folder: 
    ```
 
-bash
+```bash
 Copy code
 cd arbnbclone-fixes
 Install the server dependencies:
+```
 
-bash
+```bash
 Copy code
 cd backend
 npm install
+```
 Install the client dependencies:
 
-bash
+```bash
 Copy code
 cd frontend
 npm install
+```
 Configuration
 Create .env in the backend.
+
 
 Configure the environment variables in the .env files:
 
@@ -61,17 +65,18 @@ PORT: Port number for the server
 Usage
 Start the server:
 
-bash
+```bash
 Copy code
 cd backend
 npm start
+```
 Start the client:
-
-bash
+```bash
 Copy code
 cd frontend
 npm start
 Open your browser and navigate to http://localhost:5173 to see the app in action.
+```
 
 Contributing
 Contributions are welcome! If you want to contribute to this project, follow these steps:
